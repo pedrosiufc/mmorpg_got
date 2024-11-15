@@ -17,6 +17,8 @@ var connMongoDB = function(){
   return db; //para utilizar dentros dos models
 }
 
+
+
 module.exports = function(){
   return connMongoDB;
   
