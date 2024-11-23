@@ -7,7 +7,7 @@ var connMongoDB = function(){
    //nome de banco
     'got', 
    // objeto de conexão com o servidor
-    new mongo.ServerClosedEvent( //para minha versão
+    new mongo.Server( //para minha versão
        'localhost', //endereço do banco de dados 
        27017, //porta de conexão
        {} //configurações opcinais
@@ -16,10 +16,7 @@ var connMongoDB = function(){
   );
   return db; //para utilizar dentros dos models
 }
-
-
-
 module.exports = function(){
   return connMongoDB;
-  
+
 }
