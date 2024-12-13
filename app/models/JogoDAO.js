@@ -1,11 +1,11 @@
-function JogoDAO(connection){
-	this._connection = connection();
+function JogoDAO(connection) {
+  this._connection = connection();
 }
 
-JogoDAO.prototype.gerarParametros = function(usuario){
-  this._connection.open( function(err, mongoclient){
-		mongoclient.collection("jogo", function(err, collection){
-			collection.insert({
+JogoDAO.prototype.gerarParametros = function (usuario) {
+  this._connection.open(function (err, mongoclient) {
+    mongoclient.collection("jogo", function (err, collection) {
+      collection.insert({
         usuario: usuario, //vinculando a um usuário
         moeda: 15,
         suditos: 10,
@@ -15,12 +15,25 @@ JogoDAO.prototype.gerarParametros = function(usuario){
         magia: Math.floor(Math.random() * 1000)
       });
 
-			mongoclient.close();
-		});
-	});
+      mongoclient.close();
+    });
+  });
 }
 
+JogoDAO.prototype.iniciaJogo = function (res, usuario, casa) {
+  this._connection.open(function (err, mongoclient) {
+    mongoclient.collection("jogo", function (err, collection) {
+      collection.find({ usuario: usuario }).toArray(function (err, result) {
 
-module.exports = function(){ //função exportada para ser utilizada no controller
-	return JogoDAO;
+        console.log(result[0]);
+        res.render("jogo", { img_casa: casa, jogo: result[0] });
+
+        mongoclient.close();
+      });
+    });
+  });
+}
+
+module.exports = function () {
+  return JogoDAO;
 }
