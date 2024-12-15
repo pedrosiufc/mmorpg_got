@@ -1,61 +1,40 @@
-<!DOCTYPE HTML>
-<html lang="pt-br">
-	<head>
-		<meta charset="UTF-8">
+<div id="aldeoes">
+	<h3>Aldeões</h3>
 
-		<title>MMORPG - Game of Thrones</title>
-		
-		<!-- JQuery -->
-		<script src="js/jquery-2.2.1.js"></script>
+	<form class="form-cadastro">
 
-		<!-- bootstrap - link cdn -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	
-		<!-- incluindo css -->
-		<link href="css/style.css" rel="stylesheet">
-
-	</head>
-
-	<body class="body-index">
-
-		<nav class="navbar navbar-default navbar-static-top">
-			<div class="container">
-
-				<% if(validacao.length > 0){ %>
-					<div class="alert alert-danger">
-						<strong>Atenção!</strong>
-						<ul>
-							<% for(var i = 0; i < validacao.length; i++) {%>
-								<li><%=validacao[i].msg%></li>
-							<% } %>
-						</ul>
-					</div>
-				<% } %>
-
-				<form class="form-inline form-entrar" action="/autenticar" method="post">
-					<div class="form-group">				
-						<input type="text" name="usuario" id="usuario" placeholder="Usuário" class="form-control" autocomplete="off" />
-						<input type="password" name="senha" id="senha" placeholder="Senha" class="form-control" />
-						<button type="submit" class="btn btn-success">Entrar</button>
-						<button type="button" class="btn btn-info">Cadastro</button>
-					</div>
-				</form>
-			</div>
-			
-		</nav>
-
-	    <div class="container">
-	    	<div class="row">
-	    		<div class="col-md-2"></div>
-
-	    		<div class="col-md-8">
-					<img src="images/game_of_thrones_logo.jpg" />
+		<div class="row">
+			<div class="col-xs-5">
+				<div class="form-group">
+					<select class="form-control">
+						<option value="">-- Escolha a ação</option>
+						<option value="1">Coletar recursos (2G e 1H)</option>
+						<option value="1">Enforcar aldeão (3G e 2H)</option>
+						<option value="1">Ensinar história (1G e 5H)</option>
+						<option value="1">Ensinar magia (1G e 5H)</option>
+					</select>
 				</div>
+			</div>
 
-	    		<div class="col-md-2"></div>
-		    	</div>
-	    	</div>
-	    </div>	
-		
-	</body>
-</html>
+			<div class="col-xs-3">
+				<div class="form-group">
+					<input type="number" class="form-control" id="quantidade" placeholder="Quantidade">
+				</div>
+			</div>
+
+			<div class="col-xs-4">
+				<div class="form-group row">
+					<button type="submit" class="btn btn-primary">Ordenar</button>
+				</div>
+			</div>
+
+		</div>
+
+		<hr />
+		<div class="row">
+			<div class="col-xs-12">
+				<span>Senhor, você possui 8 aldeões desocupados e 2 aldeões em atividade.</span>
+			</div>
+		</div>
+	</form>
+</div>
